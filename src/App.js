@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+class App extends Component {
+  state = { count: 1, show: false };
+  increment = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+  decrement = () => {
+    if (this.state.count > 0) {
+      this.setState({ count: this.state.count - 1 });
+    }
+  };
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  showContent = () => {
+    if (this.state.show == true) {
+      this.setState({ show: false });
+    } else {
+      this.setState({ show: true });
+    }
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>hello</h1>
+        <button onClick={this.increment}>+</button>
+        <h2>{this.state.count} </h2>
+        <button onClick={this.decrement}>-</button>
+
+        <button onClick={this.showContent}>show</button>
+        {this.state.show ? (
+          <div>
+            <p> hello</p>
+            <h1>hello everyone</h1>
+            <form>
+              <label>email</label>
+              <input/>
+            </form>
+          </div>
+        ) : null}
+      </div>
+    );
+  }
 }
 
 export default App;
